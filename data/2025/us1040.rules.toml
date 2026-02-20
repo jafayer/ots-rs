@@ -1,0 +1,536 @@
+[meta]
+form = "US_1040"
+year = 2025
+version = 1
+constants_file = "data/2025/us1040.toml"
+
+[engine]
+currency_scale = 2
+rounding_mode = "conditional_whole_dollars"
+allow_hooks = true
+
+# -----------------------------
+# Field declarations
+# -----------------------------
+
+[[fields]]
+id = "status"
+type = "enum"
+source = "input"
+required = true
+enum_ref = "status"
+
+[[fields]]
+id = "L1a"
+type = "money"
+source = "input_list"
+required = true
+
+[[fields]]
+id = "L1b"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L1c"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L1d"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L1e"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L1f"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L1g"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L1h"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L1"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L2b"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L3b"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L4b"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L5b"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L6a"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L6"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L7"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L8"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L9"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L10"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L11"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L12"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L13a"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L13b"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L13"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L14"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L15"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L16"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L17"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L18"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L19"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L20"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L21"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L22"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L23"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L24"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L25a"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L25b"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L25c"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L25"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L26"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L27"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L28"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L29"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L30"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L31"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L32"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L33"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "ApplyTo2025"
+type = "percent"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L36"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L37"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L38"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L34"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L35"
+type = "money"
+source = "computed"
+
+# -----------------------------
+# Rule graph
+# -----------------------------
+
+[[rules]]
+id = "rule_L1"
+target = "L1"
+kind = "sum"
+args = ["L1a", "L1b", "L1c", "L1d", "L1e", "L1f", "L1g", "L1h"]
+
+[[rules]]
+id = "rule_L6"
+target = "L6"
+kind = "hook"
+hook = "us1040::socsec_taxability"
+args = ["L6a"]
+comment = "Uses social_security_taxability constants and Sched1 context"
+
+[[rules]]
+id = "rule_L7"
+target = "L7"
+kind = "hook"
+hook = "us1040::capital_gains_pipeline"
+comment = "Populates Schedule D and returns line 7"
+
+[[rules]]
+id = "rule_L8"
+target = "L8"
+kind = "hook"
+hook = "us1040::schedule1_total_additional_income"
+
+[[rules]]
+id = "rule_L9"
+target = "L9"
+kind = "sum"
+args = ["L1", "L2b", "L3b", "L4b", "L5b", "L6", "L7", "L8"]
+
+[[rules]]
+id = "rule_L10"
+target = "L10"
+kind = "hook"
+hook = "us1040::schedule1_adjustments_total"
+
+[[rules]]
+id = "rule_L11"
+target = "L11"
+kind = "sub"
+args = ["L9", "L10"]
+
+[[rules]]
+id = "rule_L12"
+target = "L12"
+kind = "hook"
+hook = "us1040::standard_or_itemized_deduction"
+args = ["status", "ScheduleAItemized"]
+constants = ["standard_deduction", "schedule_a"]
+
+[[rules]]
+id = "rule_L13"
+target = "L13"
+kind = "sum"
+args = ["L13a", "L13b"]
+
+[[rules]]
+id = "rule_L14"
+target = "L14"
+kind = "max"
+args = ["0", "L11 - L12 - L13"]
+
+[[rules]]
+id = "rule_L15"
+target = "L15"
+kind = "hook"
+hook = "us1040::taxable_income_after_dependency_checks"
+args = ["L14"]
+
+[[rules]]
+id = "rule_L16"
+target = "L16"
+kind = "hook"
+hook = "us1040::compute_tax_line"
+args = ["status", "L15"]
+comment = "Chooses TaxRateFunction / QDCGT worksheet / Schedule D worksheet"
+
+[[rules]]
+id = "rule_L17"
+target = "L17"
+kind = "hook"
+hook = "us1040::schedule2_line3_tax"
+
+[[rules]]
+id = "rule_L18"
+target = "L18"
+kind = "sum"
+args = ["L16", "L17"]
+
+[[rules]]
+id = "rule_L20"
+target = "L20"
+kind = "hook"
+hook = "us1040::schedule3_nonrefundable_credits_total"
+
+[[rules]]
+id = "rule_L21"
+target = "L21"
+kind = "sum"
+args = ["L19", "L20"]
+
+[[rules]]
+id = "rule_L22"
+target = "L22"
+kind = "max"
+args = ["0", "L18 - L21"]
+
+[[rules]]
+id = "rule_L23"
+target = "L23"
+kind = "hook"
+hook = "us1040::schedule2_additional_taxes_total"
+
+[[rules]]
+id = "rule_L24"
+target = "L24"
+kind = "sum"
+args = ["L22", "L23"]
+
+[[rules]]
+id = "rule_L25"
+target = "L25"
+kind = "sum"
+args = ["L25a", "L25b", "L25c"]
+
+[[rules]]
+id = "rule_L31"
+target = "L31"
+kind = "hook"
+hook = "us1040::schedule3_refundable_total"
+
+[[rules]]
+id = "rule_L32"
+target = "L32"
+kind = "sum"
+args = ["L27", "L28", "L29", "L30", "L31"]
+
+[[rules]]
+id = "rule_L33"
+target = "L33"
+kind = "sum"
+args = ["L25", "L26", "L32"]
+
+[[rules]]
+id = "rule_ApplyTo2025_Validated"
+target = "ApplyTo2025"
+kind = "clamp"
+args = ["ApplyTo2025", "refund.apply_to_next_year_min_pct", "refund.apply_to_next_year_max_pct"]
+
+[[rules]]
+id = "rule_refund_or_due"
+kind = "branch"
+if = "L33 > L24"
+then = ["rule_refund_L34", "rule_refund_L35", "rule_refund_L36"]
+else = ["rule_due_L37"]
+
+[[rules]]
+id = "rule_refund_L34"
+target = "L34"
+kind = "sub"
+args = ["L33", "L24"]
+
+[[rules]]
+id = "rule_refund_L35"
+target = "L35"
+kind = "mul"
+args = ["L34", "(1 - ApplyTo2025/100)"]
+
+[[rules]]
+id = "rule_refund_L36"
+target = "L36"
+kind = "sub"
+args = ["L34", "L35"]
+
+[[rules]]
+id = "rule_due_L37"
+target = "L37"
+kind = "sum"
+args = ["L24 - L33", "L38"]
+
+# -----------------------------
+# Validation and compute order
+# -----------------------------
+
+[[validations]]
+id = "validate_apply_to_2025"
+kind = "range"
+field = "ApplyTo2025"
+min = "refund.apply_to_next_year_min_pct"
+max = "refund.apply_to_next_year_max_pct"
+severity = "error"
+
+[[validations]]
+id = "validate_status"
+kind = "enum"
+field = "status"
+enum_ref = "status"
+severity = "error"
+
+[execution]
+strategy = "dag"
+trace = true
+emit_intermediate = true
+
+[hooks]
+"us1040::socsec_taxability" = { module = "forms::y2025::us1040::worksheets", fn = "socsec_taxability" }
+"us1040::capital_gains_pipeline" = { module = "forms::y2025::us1040::capital_gains", fn = "compute_l7" }
+"us1040::schedule1_total_additional_income" = { module = "forms::y2025::us1040::schedule1", fn = "compute_l8" }
+"us1040::schedule1_adjustments_total" = { module = "forms::y2025::us1040::schedule1", fn = "compute_l10" }
+"us1040::standard_or_itemized_deduction" = { module = "forms::y2025::us1040::deductions", fn = "compute_l12" }
+"us1040::taxable_income_after_dependency_checks" = { module = "forms::y2025::us1040::core", fn = "compute_l15" }
+"us1040::compute_tax_line" = { module = "forms::y2025::us1040::tax", fn = "compute_l16" }
+"us1040::schedule2_line3_tax" = { module = "forms::y2025::us1040::schedule2", fn = "compute_l17_line3" }
+"us1040::schedule2_additional_taxes_total" = { module = "forms::y2025::us1040::schedule2", fn = "compute_l17" }
+"us1040::schedule3_nonrefundable_credits_total" = { module = "forms::y2025::us1040::schedule3", fn = "compute_l20" }
+"us1040::schedule3_refundable_total" = { module = "forms::y2025::us1040::schedule3", fn = "compute_l31" }

@@ -1,0 +1,154 @@
+[meta]
+form = "NJ_1040"
+year = 2025
+source_file = "OTS_2025/src/taxsolve_NJ_1040_2025.c"
+template_file = "OTS_2025/tax_form_files/NJ_1040/NJ_1040_2025_template.txt"
+version = 23.00
+currency = "USD"
+
+[status]
+single = 1
+married_filing_jointly = 2
+married_filing_separately = 3
+head_of_household = 4
+widow = 5
+
+[parser]
+form_title_expected = "Title:  NJ-1040 State 2025"
+rounding_mode = "conditional_whole_dollars"
+
+[tax_table]
+quantize_income_below = 100000.0
+quantize_step = 50.0
+quantize_midpoint_factor = 0.5
+quantize_floor_epsilon = 0.000001
+
+# Piecewise linear formulas as implemented in TaxRateFormula().
+# For each bracket segment: tax = income * rate - offset
+
+[[tax_formula.single_or_mfs.brackets]]
+max_income = 20000.0
+rate = 0.014
+offset = 0.0
+
+[[tax_formula.single_or_mfs.brackets]]
+max_income = 35000.0
+rate = 0.0175
+offset = 70.0
+
+[[tax_formula.single_or_mfs.brackets]]
+max_income = 40000.0
+rate = 0.035
+offset = 682.5
+
+[[tax_formula.single_or_mfs.brackets]]
+max_income = 75000.0
+rate = 0.05525
+offset = 1492.5
+
+[[tax_formula.single_or_mfs.brackets]]
+max_income = 500000.0
+rate = 0.0637
+offset = 2126.25
+
+[[tax_formula.single_or_mfs.brackets]]
+max_income = 1000000.0
+rate = 0.0897
+offset = 15126.25
+
+[[tax_formula.single_or_mfs.brackets]]
+max_income = 9e19
+rate = 0.1075
+offset = 32926.25
+
+[[tax_formula.mfj_hoh_widow.brackets]]
+max_income = 20000.0
+rate = 0.014
+offset = 0.0
+
+[[tax_formula.mfj_hoh_widow.brackets]]
+max_income = 50000.0
+rate = 0.0175
+offset = 70.0
+
+[[tax_formula.mfj_hoh_widow.brackets]]
+max_income = 70000.0
+rate = 0.0245
+offset = 420.0
+
+[[tax_formula.mfj_hoh_widow.brackets]]
+max_income = 80000.0
+rate = 0.035
+offset = 1154.5
+
+[[tax_formula.mfj_hoh_widow.brackets]]
+max_income = 150000.0
+rate = 0.05525
+offset = 2775.0
+
+[[tax_formula.mfj_hoh_widow.brackets]]
+max_income = 500000.0
+rate = 0.0637
+offset = 4042.5
+
+[[tax_formula.mfj_hoh_widow.brackets]]
+max_income = 1000000.0
+rate = 0.0897
+offset = 17042.5
+
+[[tax_formula.mfj_hoh_widow.brackets]]
+max_income = 9e19
+rate = 0.1075
+offset = 34842.5
+
+[filing_threshold]
+single_or_mfs = 10000.0
+mfj_or_hoh_or_widow = 20000.0
+
+[exemptions]
+base_personal_count_multiplier = 1000.0
+over65_multiplier = 1000.0
+blind_or_disabled_multiplier = 1000.0
+veteran_multiplier = 6000.0
+qualified_dependent_children_multiplier = 1500.0
+other_dependents_multiplier = 1500.0
+dependents_attending_college_multiplier = 1000.0
+
+[worksheet_f]
+medical_floor_rate = 0.02
+formula = "L31 = max(0, F1 - 0.02*L29) + F4 + F5"
+
+[property_tax]
+deduction_cap_non_mfs = 15000.0
+deduction_cap_mfs = 7500.0
+credit_non_mfs = 50.0
+credit_mfs = 25.0
+coj_ratio_cap = 1.0
+
+[property_tax.eligibility]
+uses_filing_threshold = true
+ineligible_if = "L29 < filing_threshold and (L7 > 0 or L8 > 0)"
+
+[worksheets.h]
+H2_non_mfs_cap = 15000.0
+H2_mfs_cap = 7500.0
+
+[worksheets.i]
+description = "Used when COJ_9a > 0 for property-tax deduction vs credit decision"
+
+[aggregation_ranges]
+L27_sum_from = [15, 26]
+L38_sum_from = [30, 36]
+L49_sum_from = [46, 48]
+L54_sum_from = [50, 53]
+L66_sum_from = [55, 65]
+L78_sum_from = [69, 77]
+
+[refund_or_due]
+balance_due_if = "L66 < L54"
+balance_due_line = 79
+overpayment_line = 80
+
+[output]
+write_display_file = true
+append_pdf_markups = true

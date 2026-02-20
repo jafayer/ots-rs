@@ -1,0 +1,214 @@
+[meta]
+form = "US_1040"
+year = 2025
+source_file = "OTS_2025/src/taxsolve_US_1040_2025.c"
+version = 23.01
+currency = "USD"
+
+[status]
+single = 1
+married_filing_jointly = 2
+married_filing_separately = 3
+head_of_household = 4
+widow = 5
+
+[parser]
+cap_gain_adjustment_codes = "BTNHDQXRWLESCMOZY"
+max_adj_error_count = 25
+max_string_length = 2048
+
+[tax_table]
+quantize_income_below = 100000.0
+quantize_step_small = 5.0
+quantize_step_medium = 25.0
+quantize_step_large = 50.0
+quantize_small_threshold = 25.0
+quantize_medium_threshold = 3000.0
+
+[tax_table.brackets.single]
+breakpoints = [0.0, 11925.0, 48475.0, 103350.0, 197300.0, 250525.0, 626350.0, 9e19]
+rates = [0.10, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37]
+
+[tax_table.brackets.married_filing_jointly]
+breakpoints = [0.0, 23850.0, 96950.0, 206700.0, 394600.0, 501050.0, 751600.0, 9e19]
+rates = [0.10, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37]
+
+[tax_table.brackets.married_filing_separately]
+breakpoints = [0.0, 11925.0, 48475.0, 103350.0, 197300.0, 250525.0, 375800.0, 9e19]
+rates = [0.10, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37]
+
+[tax_table.brackets.head_of_household]
+breakpoints = [0.0, 17000.0, 64850.0, 103350.0, 197300.0, 250500.0, 626350.0, 9e19]
+rates = [0.10, 0.12, 0.22, 0.24, 0.32, 0.35, 0.37]
+
+[standard_deduction.base]
+single = 15750.0
+married_filing_jointly = 31500.0
+married_filing_separately = 15750.0
+head_of_household = 23625.0
+
+[standard_deduction.additional_boxes."1"]
+single = 17750.0
+married_filing_jointly = 33100.0
+married_filing_separately = 17350.0
+head_of_household = 25625.0
+
+[standard_deduction.additional_boxes."2"]
+single = 19750.0
+married_filing_jointly = 34700.0
+married_filing_separately = 18950.0
+head_of_household = 27625.0
+
+[standard_deduction.additional_boxes."3"]
+married_filing_jointly = 36300.0
+married_filing_separately = 20550.0
+
+[standard_deduction.additional_boxes."4"]
+married_filing_jointly = 37900.0
+married_filing_separately = 22150.0
+
+[min_income_to_file]
+single_under_65 = 15700.0
+single_65_or_over = 17750.0
+mfj_both_under_65 = 31500.0
+mfj_one_65_or_over = 33100.0
+mfj_both_65_or_over = 34700.0
+mfs_any_age = 5.0
+hoh_under_65 = 23625.0
+hoh_65_or_over = 23625.0
+widow_under_65 = 31500.0
+widow_65_or_over = 33100.0
+
+[capital_gains_qualified_dividends]
+rate_15 = 0.15
+rate_20 = 0.20
+
+[capital_gains_qualified_dividends.thresholds.zero_percent]
+single = 48350.0
+married_filing_jointly = 96700.0
+married_filing_separately = 48350.0
+head_of_household = 64750.0
+widow = 96700.0
+
+[capital_gains_qualified_dividends.thresholds.fifteen_percent_upper]
+single = 533400.0
+married_filing_jointly = 600050.0
+married_filing_separately = 300000.0
+head_of_household = 566700.0
+widow = 600050.0
+
+[amt]
+rate_low = 0.26
+rate_high = 0.28
+
+[amt.part2.single]
+phaseout_start = 626350.0
+phaseout_end = 978750.0
+rate_change_threshold = 239100.0
+offset = 4782.0
+exemption = 88100.0
+
+[amt.part2.head_of_household]
+phaseout_start = 626350.0
+phaseout_end = 978750.0
+rate_change_threshold = 239100.0
+offset = 4782.0
+exemption = 88100.0
+
+[amt.part2.married_filing_jointly]
+phaseout_start = 1252700.0
+phaseout_end = 1800700.0
+rate_change_threshold = 239100.0
+offset = 4782.0
+exemption = 137000.0
+
+[amt.part2.widow]
+phaseout_start = 1252700.0
+phaseout_end = 1800700.0
+rate_change_threshold = 239100.0
+offset = 4782.0
+exemption = 137000.0
+
+[amt.part2.married_filing_separately]
+phaseout_start = 626350.0
+phaseout_end = 900350.0
+rate_change_threshold = 119550.0
+offset = 2391.0
+exemption = 68500.0
+part1_extra_income_above = 900350.0
+part1_extra_income_cutoff = 1174350.0
+part1_extra_exemption_addback = 68500.0
+part1_extra_income_factor = 0.25
+
+[amt.capital_gain_thresholds.zero_percent]
+single = 48350.0
+married_filing_jointly = 96700.0
+married_filing_separately = 48350.0
+head_of_household = 64750.0
+widow = 96700.0
+
+[amt.capital_gain_thresholds.fifteen_percent_upper]
+single = 533400.0
+married_filing_jointly = 600050.0
+married_filing_separately = 300000.0
+head_of_household = 566700.0
+widow = 600050.0
+
+[sched_d_tax_worksheet]
+rate_15 = 0.15
+rate_20 = 0.20
+collectibles_rate = 0.25
+unrecaptured_1250_rate = 0.28
+
+[sched_d_tax_worksheet.thresholds.zero_percent]
+single = 48350.0
+married_filing_jointly = 96700.0
+married_filing_separately = 48350.0
+head_of_household = 64750.0
+widow = 96700.0
+
+[sched_d_tax_worksheet.thresholds.collectibles_cap]
+single = 197390.0
+married_filing_jointly = 394600.0
+married_filing_separately = 197390.0
+head_of_household = 197300.0
+widow = 394600.0
+
+[sched_d_tax_worksheet.thresholds.fifteen_percent_upper]
+single = 533400.0
+married_filing_jointly = 600050.0
+married_filing_separately = 300000.0
+head_of_household = 566700.0
+widow = 600050.0
+
+[social_security_taxability]
+base_mfj = 32000.0
+base_other = 25000.0
+second_mfj = 12000.0
+second_other = 9000.0
+taxable_fraction = 0.85
+
+[student_loan_interest]
+max_interest_deduction = 2500.0
+agi_phaseout_start_single_or_non_mfj = 85000.0
+agi_phaseout_start_mfj = 170000.0
+phaseout_range_single_or_non_mfj = 15000.0
+phaseout_range_mfj = 30000.0
+phaseout_cap = 1.0
+
+[schedule_a]
+medical_floor_rate = 0.075
+salt_cap_non_mfs = 40000.0
+salt_cap_mfs = 20000.0
+sttd_trigger_agi = 500000.0
+sttd_trigger_localtax_non_mfs = 10000.0
+sttd_trigger_localtax_mfs = 5000.0
+sttd_ws1 = 40000.0
+sttd_ws5_non_mfs = 500000.0
+sttd_ws5_mfs = 250000.0
+sttd_reduction_rate = 0.30
+sttd_min_after_reduction = 10000.0
+
+[refund]
+apply_to_next_year_min_pct = 0.0
+apply_to_next_year_max_pct = 100.0

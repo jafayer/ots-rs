@@ -1,0 +1,9 @@
+file = { SOI ~ item* ~ EOI }
+item = _{ quoted | word | semicolon | newline | ws | comment }
+
+semicolon = { ";" }
+newline = { "\r\n" | "\n" }
+ws = { (" " | "\t")+ }
+comment = { "{" ~ (!"}" ~ ANY)* ~ "}" }
+quoted = { "\"" ~ ("\\\"" | !("\"") ~ ANY)* ~ "\"" }
+word = { (!(";" | "\r" | "\n" | "{" | "}" | "\"" | " " | "\t") ~ ANY)+ }

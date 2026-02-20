@@ -1,0 +1,772 @@
+[meta]
+form = "NJ_1040"
+year = 2025
+version = 1
+constants_file = "data/2025/nj1040.toml"
+
+[engine]
+currency_scale = 2
+rounding_mode = "conditional_whole_dollars"
+allow_hooks = true
+
+# -----------------------------
+# Field declarations
+# -----------------------------
+
+[[fields]]
+id = "status"
+type = "enum"
+source = "input"
+required = true
+enum_ref = "status"
+
+[[fields]]
+id = "YouOver65"
+type = "bool"
+source = "input"
+default = 0.0
+
+[[fields]]
+id = "SpouseOver65"
+type = "bool"
+source = "input"
+default = 0.0
+
+[[fields]]
+id = "YouBlindDisa"
+type = "bool"
+source = "input"
+default = 0.0
+
+[[fields]]
+id = "SpouseBlindDisa"
+type = "bool"
+source = "input"
+default = 0.0
+
+[[fields]]
+id = "YouVeteran"
+type = "bool"
+source = "input"
+default = 0.0
+
+[[fields]]
+id = "SpouseVeteran"
+type = "bool"
+source = "input"
+default = 0.0
+
+[[fields]]
+id = "L10_count"
+type = "integer"
+source = "input"
+default = 0
+
+[[fields]]
+id = "L11_count"
+type = "integer"
+source = "input"
+default = 0
+
+[[fields]]
+id = "L12_count"
+type = "integer"
+source = "input"
+default = 0
+
+[[fields]]
+id = "L6"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L7"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L8"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L9"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L10"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L11"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L12"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L13"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L15"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L16a"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L16b"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L17"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L18"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L19"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L20a"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L20b"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L21"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L22"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L23"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L24"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L25"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L26"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L27"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L28"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L29"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L30"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "F1"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "F4"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "F5"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L31"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L32"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L33"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L34"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L35"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L36"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L37a"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L37b"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L37c"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L38"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L39"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L40a"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "HomeOwner"
+type = "bool"
+source = "input"
+default = 0.0
+
+[[fields]]
+id = "Tenant"
+type = "bool"
+source = "input"
+default = 0.0
+
+[[fields]]
+id = "COJ1"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "COJ9a"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L41"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L42"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L43"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L44"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L45"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L46"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L47"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L48"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L49"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L50"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L51"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L52"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L53"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L54"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L55"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L56"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L57"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L58"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L59"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L60"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L61"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L62"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L63"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L64"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L65"
+type = "money"
+source = "input_list"
+default = 0.0
+
+[[fields]]
+id = "L66"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L67"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L68"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L78"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L79"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "L80"
+type = "money"
+source = "computed"
+
+# -----------------------------
+# Declarative rules
+# -----------------------------
+
+[[rules]]
+id = "rule_personal_exemptions"
+target = "L6"
+kind = "hook"
+hook = "nj1040::compute_L6"
+comment = "Status-based personal exemption count then multiplied by exemptions.base_personal_count_multiplier"
+
+[[rules]]
+id = "rule_over65"
+target = "L7"
+kind = "hook"
+hook = "nj1040::compute_L7"
+
+[[rules]]
+id = "rule_blind_disabled"
+target = "L8"
+kind = "hook"
+hook = "nj1040::compute_L8"
+
+[[rules]]
+id = "rule_veteran"
+target = "L9"
+kind = "hook"
+hook = "nj1040::compute_L9"
+
+[[rules]]
+id = "rule_dependents_children"
+target = "L10"
+kind = "mul"
+args = ["L10_count", "exemptions.qualified_dependent_children_multiplier"]
+
+[[rules]]
+id = "rule_dependents_other"
+target = "L11"
+kind = "mul"
+args = ["L11_count", "exemptions.other_dependents_multiplier"]
+
+[[rules]]
+id = "rule_dependents_college"
+target = "L12"
+kind = "mul"
+args = ["L12_count", "exemptions.dependents_attending_college_multiplier"]
+
+[[rules]]
+id = "rule_L13"
+target = "L13"
+kind = "sum"
+args = ["L6", "L7", "L8", "L9", "L10", "L11", "L12"]
+
+[[rules]]
+id = "rule_L18_nonnegative"
+target = "L18"
+kind = "max"
+args = ["0", "L18"]
+
+[[rules]]
+id = "rule_L19_nonnegative"
+target = "L19"
+kind = "max"
+args = ["0", "L19"]
+
+[[rules]]
+id = "rule_L27"
+target = "L27"
+kind = "sum"
+args = ["L15", "L16a", "L16b", "L17", "L18", "L19", "L20a", "L20b", "L21", "L22", "L23", "L24", "L25", "L26"]
+
+[[rules]]
+id = "rule_L28"
+target = "L28"
+kind = "sum"
+args = ["L28a", "L28b"]
+
+[[rules]]
+id = "rule_L29"
+target = "L29"
+kind = "sub"
+args = ["L27", "L28"]
+
+[[rules]]
+id = "rule_filing_threshold"
+target = "filing_threshold"
+kind = "hook"
+hook = "nj1040::compute_filing_threshold"
+
+[[rules]]
+id = "rule_L30"
+target = "L30"
+kind = "alias"
+args = ["L13"]
+
+[[rules]]
+id = "rule_F2"
+target = "F2"
+kind = "mul"
+args = ["worksheet_f.medical_floor_rate", "L29"]
+
+[[rules]]
+id = "rule_F3"
+target = "F3"
+kind = "max"
+args = ["0", "F1 - F2"]
+
+[[rules]]
+id = "rule_F6"
+target = "F6"
+kind = "sum"
+args = ["F3", "F4", "F5"]
+
+[[rules]]
+id = "rule_L31"
+target = "L31"
+kind = "alias"
+args = ["F6"]
+
+[[rules]]
+id = "rule_L38"
+target = "L38"
+kind = "sum"
+args = ["L30", "L31", "L32", "L33", "L34", "L35", "L36", "L37a", "L37b", "L37c"]
+
+[[rules]]
+id = "rule_L39"
+target = "L39"
+kind = "max"
+args = ["0", "L29 - L38"]
+
+[[rules]]
+id = "rule_L41"
+target = "L41"
+kind = "hook"
+hook = "nj1040::compute_L41"
+args = ["status", "L40a", "HomeOwner"]
+
+[[rules]]
+id = "rule_L42"
+target = "L42"
+kind = "max"
+args = ["0", "L39 - L41"]
+
+[[rules]]
+id = "rule_L43"
+target = "L43"
+kind = "hook"
+hook = "nj1040::compute_L43"
+args = ["status", "L42"]
+
+[[rules]]
+id = "rule_L44"
+target = "L44"
+kind = "hook"
+hook = "nj1040::compute_L44"
+args = ["L43", "L27", "COJ1", "COJ9a"]
+
+[[rules]]
+id = "rule_L56"
+target = "L56"
+kind = "hook"
+hook = "nj1040::compute_L56"
+args = ["status", "L29", "L44", "L40a", "HomeOwner", "Tenant"]
+
+[[rules]]
+id = "rule_L45"
+target = "L45"
+kind = "sub"
+args = ["L43", "L44"]
+
+[[rules]]
+id = "rule_L49"
+target = "L49"
+kind = "sum"
+args = ["L46", "L47", "L48"]
+
+[[rules]]
+id = "rule_L50"
+target = "L50"
+kind = "max"
+args = ["0", "L45 - L49"]
+
+[[rules]]
+id = "rule_L54"
+target = "L54"
+kind = "sum"
+args = ["L50", "L51", "L52", "L53"]
+
+[[rules]]
+id = "rule_L66"
+target = "L66"
+kind = "sum"
+args = ["L55", "L56", "L57", "L58", "L59", "L60", "L61", "L62", "L63", "L64", "L65"]
+
+[[rules]]
+id = "rule_L78"
+target = "L78"
+kind = "sum"
+args = ["L69", "L70", "L71", "L72", "L73", "L74", "L75", "L76", "L77"]
+
+[[rules]]
+id = "rule_balance_or_refund"
+kind = "branch"
+if = "L66 < L54"
+then = ["rule_due_L67", "rule_due_L79"]
+else = ["rule_overpay_L68", "rule_overpay_L80"]
+
+[[rules]]
+id = "rule_due_L67"
+target = "L67"
+kind = "sub"
+args = ["L54", "L66"]
+
+[[rules]]
+id = "rule_due_L79"
+target = "L79"
+kind = "sum"
+args = ["L67", "L78"]
+
+[[rules]]
+id = "rule_overpay_L68"
+target = "L68"
+kind = "sub"
+args = ["L66", "L54"]
+
+[[rules]]
+id = "rule_overpay_L80"
+target = "L80"
+kind = "sub"
+args = ["L68", "L78"]
+
+# -----------------------------
+# Validations
+# -----------------------------
+
+[[validations]]
+id = "validate_status"
+kind = "enum"
+field = "status"
+enum_ref = "status"
+severity = "error"
+
+[[validations]]
+id = "validate_homeowner_tenant"
+kind = "warning_if"
+condition = "HomeOwner and Tenant"
+message = "Both HomeOwner and Tenant are checked"
+
+[[validations]]
+id = "validate_nonnegative_taxable_income"
+kind = "nonnegative"
+field = "L39"
+severity = "error"
+
+[execution]
+strategy = "dag"
+trace = true
+emit_intermediate = true
+
+[hooks]
+"nj1040::compute_L6" = { module = "forms::nj1040_2025", fn = "compute_l6" }
+"nj1040::compute_L7" = { module = "forms::nj1040_2025", fn = "compute_l7" }
+"nj1040::compute_L8" = { module = "forms::nj1040_2025", fn = "compute_l8" }
+"nj1040::compute_L9" = { module = "forms::nj1040_2025", fn = "compute_l9" }
+"nj1040::compute_L41" = { module = "forms::nj1040_2025", fn = "compute_l41" }
+"nj1040::compute_L43" = { module = "forms::nj1040_2025", fn = "compute_l43" }
+"nj1040::compute_L44" = { module = "forms::nj1040_2025", fn = "compute_l44" }
+"nj1040::compute_L56" = { module = "forms::nj1040_2025", fn = "compute_l56" }
+"nj1040::compute_filing_threshold" = { module = "forms::nj1040_2025", fn = "compute_filing_threshold" }

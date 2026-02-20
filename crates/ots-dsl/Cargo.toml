@@ -1,0 +1,10 @@
+[package]
+name = "ots-dsl"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+ots-core = { path = "../ots-core" }
+pest = "2"
+pest_derive = "2"
+thiserror = "2"
