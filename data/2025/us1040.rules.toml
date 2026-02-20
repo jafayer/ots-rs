@@ -72,6 +72,7 @@ default = 0.0
 id = "L1"
 type = "money"
 source = "computed"
+label = "Wages, salaries, tips"
 
 [[fields]]
 id = "L2b"
@@ -122,6 +123,7 @@ source = "computed"
 id = "L9"
 type = "money"
 source = "computed"
+label = "Total Income"
 
 [[fields]]
 id = "L10"
@@ -132,11 +134,13 @@ source = "computed"
 id = "L11"
 type = "money"
 source = "computed"
+label = "Adjusted Gross Income"
 
 [[fields]]
 id = "L12"
 type = "money"
 source = "computed"
+label = "Standard or Itemized Deduction"
 
 [[fields]]
 id = "L13a"
@@ -164,11 +168,13 @@ source = "computed"
 id = "L15"
 type = "money"
 source = "computed"
+label = "Taxable Income"
 
 [[fields]]
 id = "L16"
 type = "money"
 source = "computed"
+label = "Tax"
 
 [[fields]]
 id = "L17"
@@ -179,6 +185,7 @@ source = "computed"
 id = "L18"
 type = "money"
 source = "computed"
+label = "Tax + Sched 2 (line 3)"
 
 [[fields]]
 id = "L19"
@@ -200,6 +207,7 @@ source = "computed"
 id = "L22"
 type = "money"
 source = "computed"
+label = "Tax after non-refundable credits"
 
 [[fields]]
 id = "L23"
@@ -210,6 +218,7 @@ source = "computed"
 id = "L24"
 type = "money"
 source = "computed"
+label = "Total Tax"
 
 [[fields]]
 id = "L25a"
@@ -233,6 +242,7 @@ default = 0.0
 id = "L25"
 type = "money"
 source = "computed"
+label = "Total Federal Withholding"
 
 [[fields]]
 id = "L26"
@@ -278,6 +288,7 @@ source = "computed"
 id = "L33"
 type = "money"
 source = "computed"
+label = "Total Payments"
 
 [[fields]]
 id = "ApplyTo2025"
@@ -289,11 +300,13 @@ default = 0.0
 id = "L36"
 type = "money"
 source = "computed"
+label = "Applied to next year"
 
 [[fields]]
 id = "L37"
 type = "money"
 source = "computed"
+label = "Balance Due !!!"
 
 [[fields]]
 id = "L38"
@@ -305,11 +318,13 @@ default = 0.0
 id = "L34"
 type = "money"
 source = "computed"
+label = "OverPayment"
 
 [[fields]]
 id = "L35"
 type = "money"
 source = "computed"
+label = "Refund !!!"
 
 # -----------------------------
 # Rule graph

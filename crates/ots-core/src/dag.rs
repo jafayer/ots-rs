@@ -107,6 +107,7 @@ pub struct FieldSpec {
     pub field_type: String,
     pub default: Option<f64>,
     pub enum_ref: Option<String>,
+    pub label: Option<String>,
 }
 
 #[derive(Debug, Clone, PartialEq, Deserialize)]

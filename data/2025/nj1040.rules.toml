@@ -202,6 +202,7 @@ default = 0.0
 id = "L27"
 type = "money"
 source = "computed"
+label = "Total Income"
 
 [[fields]]
 id = "L28"
@@ -212,6 +213,7 @@ source = "computed"
 id = "L29"
 type = "money"
 source = "computed"
+label = "NJ Gross Income"
 
 [[fields]]
 id = "L30"
@@ -225,6 +227,16 @@ source = "input_list"
 default = 0.0
 
 [[fields]]
+id = "F2"
+type = "money"
+source = "computed"
+
+[[fields]]
+id = "F3"
+type = "money"
+source = "computed"
+
+[[fields]]
 id = "F4"
 type = "money"
 source = "input_list"
@@ -235,6 +247,11 @@ id = "F5"
 type = "money"
 source = "input_list"
 default = 0.0
+
+[[fields]]
+id = "F6"
+type = "money"
+source = "computed"
 
 [[fields]]
 id = "L31"
@@ -293,11 +310,13 @@ default = 0.0
 id = "L38"
 type = "money"
 source = "computed"
+label = "Total Exemptions and Deductions"
 
 [[fields]]
 id = "L39"
 type = "money"
 source = "computed"
+label = "Taxable Income"
 
 [[fields]]
 id = "L40a"
@@ -333,26 +352,31 @@ default = 0.0
 id = "L41"
 type = "money"
 source = "computed"
+label = "Property Tax Deduction"
 
 [[fields]]
 id = "L42"
 type = "money"
 source = "computed"
+label = "NJ Taxable Income"
 
 [[fields]]
 id = "L43"
 type = "money"
 source = "computed"
+label = "TAX"
 
 [[fields]]
 id = "L44"
 type = "money"
 source = "computed"
+label = "Credit for Taxes paid to other jurisdictions."
 
 [[fields]]
 id = "L45"
 type = "money"
 source = "computed"
+label = "Balance of Tax"
 
 [[fields]]
 id = "L46"
@@ -376,11 +400,13 @@ default = 0.0
 id = "L49"
 type = "money"
 source = "computed"
+label = "Total Credits."
 
 [[fields]]
 id = "L50"
 type = "money"
 source = "computed"
+label = "Balance of Tax after Credits."
 
 [[fields]]
 id = "L51"
@@ -404,17 +430,20 @@ default = 0.0
 id = "L54"
 type = "money"
 source = "computed"
+label = "Total Tax Due"
 
 [[fields]]
 id = "L55"
 type = "money"
 source = "input_list"
 default = 0.0
+label = "Total NJ Income Tax Withheld"
 
 [[fields]]
 id = "L56"
 type = "money"
 source = "computed"
+label = "Property tax Credit"
 
 [[fields]]
 id = "L57"
@@ -474,31 +503,37 @@ default = 0.0
 id = "L66"
 type = "money"
 source = "computed"
+label = "Total Withholding Payments & Credits"
 
 [[fields]]
 id = "L67"
 type = "money"
 source = "computed"
+label = "Balance Due"
 
 [[fields]]
 id = "L68"
 type = "money"
 source = "computed"
+label = "Overpayment"
 
 [[fields]]
 id = "L78"
 type = "money"
 source = "computed"
+label = "( Total Adjustments to overpayment )"
 
 [[fields]]
 id = "L79"
 type = "money"
 source = "computed"
+label = "Balance Due !!!"
 
 [[fields]]
 id = "L80"
 type = "money"
 source = "computed"
+label = "Refund !!!"
 
 # -----------------------------
 # Declarative rules

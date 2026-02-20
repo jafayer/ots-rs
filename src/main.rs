@@ -9,8 +9,8 @@ use ots_core::dag::{build_execution_dag, load_rule_schema_from_file};
 use ots_core::dag_exec::{execute_dag, HookRegistry};
 use ots_core::{build_initial_numeric_values, find_state_entry_normalized, round_field_value, FieldValue};
 use ots_dsl::{detect_round_to_whole_dollars, DslCursor};
-use ots_forms::{enrich_initial_values, list_registered_forms, register_form_hooks_from_constants_file, resolve_form};
-use ots_render::{render_computed_line, render_line};
+use ots_forms::{enrich_initial_values, list_registered_forms, register_form_hooks_from_constants_file, render_form_summary, resolve_form};
+use ots_render::{render_annotated_line, render_computed_annotated_line};
 
 const USAGE: &str = "usage:\n  ots run <form-name> <file-path> [--year <year>]";
 
@@ -134,7 +134,7 @@ fn render_computed_fields(
             } else {
                 value
             };
-            println!("{}", render_computed_line(&field.id, rendered_value));
+            println!("{}", render_computed_annotated_line(&field.id, rendered_value, field.label.as_deref()));
             continue;
         }
 
@@ -144,7 +144,7 @@ fn render_computed_fields(
             } else {
                 entry.value.clone()
             };
-            println!("{}", render_line(&field.id, &fallback_value));
+            println!("{}", render_annotated_line(&field.id, &fallback_value, field.label.as_deref()));
             continue;
         }
 
@@ -154,11 +154,15 @@ fn render_computed_fields(
             } else {
                 FieldValue::Number(default)
             };
-            println!("{}", render_line(&field.id, &default_value));
+            println!("{}", render_annotated_line(&field.id, &default_value, field.label.as_deref()));
             continue;
         }
 
-        println!("{}", render_line(&field.id, &FieldValue::Null));
+        println!("{}", render_annotated_line(&field.id, &FieldValue::Null, field.label.as_deref()));
+    }
+
+    for line in render_form_summary(form_name, year, &execution.context, constants_file) {
+        println!("{}", line);
     }
 
     Ok(())
