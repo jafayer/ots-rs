@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 use std::path::Path;
 
-use ots_core::dag_exec::HookRegistry;
+use ots_core::dag_exec::{ExecutionContext, HookRegistry};
 use thiserror::Error;
 
 #[path = "2025/us1040.rs"]
@@ -143,6 +143,31 @@ pub fn enrich_initial_values(form_name: &str, year: u16, input: &str, values: &m
 	if registration.canonical_name == "US1040" && registration.year == 2025 {
 		us1040_2025::seed_derived_input_values(input, values);
 	}
+}
+
+/// Returns form-specific summary lines to be printed after the main field output,
+/// such as marginal tax bracket and effective rate messages.
+pub fn render_form_summary(
+	form_name: &str,
+	year: u16,
+	context: &ExecutionContext,
+	constants_file: &str,
+) -> Vec<String> {
+	let Some(registration) = find_registration(form_name, year) else {
+		return vec![];
+	};
+
+	if registration.canonical_name == "NJ1040" && registration.year == 2025 {
+		let Ok(constants) = nj1040_2025::load_constants_from_file(constants_file) else {
+			return vec![];
+		};
+		let status = context.get_value("status").unwrap_or(0.0) as i64;
+		let taxable_income = context.get_value("L42").unwrap_or(0.0);
+		let tax = context.get_value("L43").unwrap_or(0.0);
+		return nj1040_2025::marginal_tax_summary_lines(&constants, status, taxable_income, tax);
+	}
+
+	vec![]
 }
 
 fn normalize_form_name(raw: &str) -> String {

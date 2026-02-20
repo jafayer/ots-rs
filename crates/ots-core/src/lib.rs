@@ -168,6 +168,8 @@ pub fn build_initial_numeric_values(
 ) -> Result<BTreeMap<String, f64>, Box<dyn std::error::Error>> {
     let mut values = BTreeMap::new();
 
+    seed_constants_from_toml(constants_toml, &mut values, "");
+
     for field in &schema.fields {
         let should_seed = field.source == "input" || field.source == "input_list";
         if !should_seed {
@@ -196,6 +198,30 @@ pub fn build_initial_numeric_values(
     }
 
     Ok(values)
+}
+
+/// Recursively flatten a TOML value into dotted-path keys, inserting only
+/// numeric leaf values.  Top-level keys use `prefix = ""` (no leading dot).
+fn seed_constants_from_toml(value: &Value, out: &mut BTreeMap<String, f64>, prefix: &str) {
+    match value {
+        Value::Table(table) => {
+            for (key, child) in table {
+                let path = if prefix.is_empty() {
+                    key.clone()
+                } else {
+                    format!("{prefix}.{key}")
+                };
+                seed_constants_from_toml(child, out, &path);
+            }
+        }
+        Value::Float(v) => {
+            out.entry(prefix.to_string()).or_insert(*v);
+        }
+        Value::Integer(v) => {
+            out.entry(prefix.to_string()).or_insert(*v as f64);
+        }
+        _ => {}
+    }
 }
 
 fn map_enum_value(enum_ref: &str, text: &str, constants_toml: &Value) -> Option<f64> {
@@ -251,4 +277,47 @@ fn enum_tokens_match(input_tokens: &[String], key_normalized: &str) -> bool {
         }
         key_normalized.contains(token)
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn seed_constants_loads_nested_numeric_values() {
+        let toml_str = r#"
+            [worksheet_f]
+            medical_floor_rate = 0.02
+
+            [exemptions]
+            qualified_dependent_children_multiplier = 1500.0
+            other_dependents_multiplier = 1500.0
+        "#;
+        let toml: toml::Value = toml::from_str(toml_str).unwrap();
+        let mut values = std::collections::BTreeMap::new();
+        seed_constants_from_toml(&toml, &mut values, "");
+
+        assert_eq!(
+            values.get("worksheet_f.medical_floor_rate").copied(),
+            Some(0.02)
+        );
+        assert_eq!(
+            values.get("exemptions.qualified_dependent_children_multiplier").copied(),
+            Some(1500.0)
+        );
+    }
+
+    #[test]
+    fn seed_constants_does_not_overwrite_existing_values() {
+        let toml_str = r#"
+            [section]
+            rate = 0.05
+        "#;
+        let toml: toml::Value = toml::from_str(toml_str).unwrap();
+        let mut values = std::collections::BTreeMap::new();
+        values.insert("section.rate".to_string(), 0.99);
+        seed_constants_from_toml(&toml, &mut values, "");
+        // Existing value must not be overwritten
+        assert_eq!(values.get("section.rate").copied(), Some(0.99));
+    }
 }

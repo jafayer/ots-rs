@@ -248,6 +248,38 @@ pub fn register_hooks_from_constants_file<P: AsRef<Path>>(
 	Ok(())
 }
 
+/// Returns lines summarizing the marginal and effective tax rates, mirroring
+/// the OpenTaxSolver output format.  Returns an empty vector when the inputs
+/// are not meaningful (zero or negative taxable income / tax).
+pub fn marginal_tax_summary_lines(constants: &Nj1040Constants, status: i64, taxable_income: f64, tax: f64) -> Vec<String> {
+	if taxable_income <= 0.0 {
+		return vec![];
+	}
+
+	let marginal_rate = marginal_bracket_rate(constants, status, taxable_income);
+	let effective_rate = tax / taxable_income * 100.0;
+
+	vec![
+		format!(" You are in the {:.1}% marginal tax bracket,", marginal_rate * 100.0),
+		format!(" and you are paying an effective {:.1}% tax on your total income.", effective_rate),
+	]
+}
+
+fn marginal_bracket_rate(constants: &Nj1040Constants, status: i64, taxable_income: f64) -> f64 {
+	let brackets = if is_single_or_mfs(status, &constants.status) {
+		&constants.tax_formula.single_or_mfs.brackets
+	} else {
+		&constants.tax_formula.mfj_hoh_widow.brackets
+	};
+
+	brackets
+		.iter()
+		.find(|b| taxable_income <= b.max_income)
+		.or_else(|| brackets.last())
+		.map(|b| b.rate)
+		.unwrap_or(0.0)
+}
+
 fn validate_constants(constants: &Nj1040Constants) -> Result<(), FormHooksError> {
 	if constants.tax_formula.single_or_mfs.brackets.is_empty() {
 		return Err(FormHooksError::InvalidTaxFormula {
@@ -376,5 +408,27 @@ mod tests {
 		] {
 			assert!(registry.is_registered(hook_name), "missing hook registration: {hook_name}");
 		}
+	}
+
+	#[test]
+	fn marginal_tax_summary_mfj_example() {
+		let path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../data/2025/nj1040.toml");
+		let constants = load_constants_from_file(path).unwrap();
+
+		// From NJ_1040_2025_example: taxable income=54413.30, tax=913.00, status=MFJ(2)
+		let lines = marginal_tax_summary_lines(&constants, constants.status.married_filing_jointly, 54413.30, 913.00);
+
+		assert_eq!(lines.len(), 2);
+		assert!(lines[0].contains("2.5%"), "expected 2.5% marginal rate, got: {}", lines[0]);
+		assert!(lines[1].contains("1.7%"), "expected 1.7% effective rate, got: {}", lines[1]);
+	}
+
+	#[test]
+	fn marginal_tax_summary_empty_for_zero_income() {
+		let path = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("../../data/2025/nj1040.toml");
+		let constants = load_constants_from_file(path).unwrap();
+
+		let lines = marginal_tax_summary_lines(&constants, 1, 0.0, 0.0);
+		assert!(lines.is_empty());
 	}
 }
